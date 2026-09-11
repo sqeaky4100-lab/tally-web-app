@@ -38,6 +38,7 @@ export function QuickFind({ open, todos, projects, onPick, onDismiss }) {
         role="dialog"
         aria-modal="true"
         aria-label="Quick Find"
+        className="tally-find"
         style={{
           width: 560, maxWidth: '92%',
           background: 'var(--surface-raised)',

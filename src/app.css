@@ -28,6 +28,10 @@ body { overflow: hidden; }
 .tally-notes strong { font-weight: var(--weight-semibold); color: var(--text-primary); }
 .tally-notes a { text-decoration: none; }
 
+/* The Quick Find field is the only thing focusable in its dialog; a ring on it
+   would draw a box around the whole surface for no information. */
+.tally-find input:focus-visible { box-shadow: none; }
+
 .tally-clamp {
   display: -webkit-box;
   -webkit-line-clamp: 2;
