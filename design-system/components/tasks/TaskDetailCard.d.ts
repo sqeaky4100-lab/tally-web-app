@@ -9,7 +9,8 @@ export interface TaskDetailCardProps {
   title: string;
   state?: CheckState;
   /** Free text beneath the title. */
-  notes?: string;
+  /** Plain text, or rendered notes (Markdown, links) as a node. */
+  notes?: React.ReactNode;
   checklist?: DetailChecklistEntry[];
   tags?: Array<string | { label: string; tone?: 'neutral' | 'blue' | 'green' | 'red' | 'amber' }>;
   when?: DetailDate;

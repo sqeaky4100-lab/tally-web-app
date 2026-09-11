@@ -1,25 +1,89 @@
-# CODING AGENTS: READ THIS FIRST
+# Tally
 
-This is a **handoff bundle** from Claude Design (claude.ai/design).
+A calm, list-first task manager for the web, built on the **Tally Design System** and seeded with
+the **Kayenta FY2022 — remaining audit work** project synced from Todoist.
 
-A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported this bundle so a coding agent can implement the designs for real.
+Live: <https://things-productivity.vercel.app>
 
-## What you should do — IMPORTANT
+---
 
-**Read the chat transcripts first.** There are 3 chat transcript(s) in `chats/`. The transcripts show the full back-and-forth between the user and the design assistant — they tell you **what the user actually wants** and **where they landed** after iterating. Don't skip them. The final HTML files are the output, but the chat is where the intent lives.
+## What this is
 
-**Find the primary design file under `project/` and read it top to bottom.** The chat transcripts will tell you which file the user was last iterating on. Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+The design system in `design-system/` was mocked up in [Claude Design](https://claude.ai/design)
+as HTML/CSS/JS prototypes. This repository implements those prototypes as a real, usable web app:
+a three-pane desktop task manager with a left rail of lists, a flat checkbox list, inline
+disclosure or a right detail pane, tags, deadlines, dark mode, quick entry and Quick Find.
 
-**If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
+Nothing was re-drawn. The app imports the design system's token CSS, its 53-glyph icon set and its
+27 React components directly — the same files the Design System tab renders.
 
-## About the design files
+## Layout
 
-The design medium is **HTML/CSS/JS** — these are prototypes, not production code. Your job is to **recreate them pixel-perfectly** in whatever technology makes sense for the target codebase (React, Vue, native, whatever fits). Match the visual output; don't copy the prototype's internal structure unless it happens to fit.
+| Path | What it is |
+| --- | --- |
+| `src/App.jsx` | State, layout, keyboard shortcuts, toasts, persistence |
+| `src/ui/` | `Sidebar` · `ListView` · `DetailPane` · `SettingsView` · `QuickFind` · `Notes` |
+| `src/lib/` | `model.js` (lists, grouping, sorting) · `date.js` · `store.js` |
+| `src/data/kayenta.json` | The synced Todoist pull — the app's seed data |
+| `design-system/` | The Tally Design System bundle: tokens, components, assets, guidelines, UI kits |
+| `chats/` | The Claude Design transcripts the system was designed in |
 
-**Don't render these files in a browser or take screenshots unless the user asks you to.** Everything you need — dimensions, colors, layout rules — is spelled out in the source. Read the HTML and CSS directly; a screenshot won't tell you anything they don't.
+`design-system/readme.md` is the design guide — content rules, visual foundations, iconography,
+and the three rules that keep work on-system. Read it before changing anything visual.
 
-## Bundle contents
+## The Todoist sync
 
-- `README.md` — this file
-- `chats/` — conversation transcripts (read these!)
-- `project/` — the `Tally Design System` project files (HTML prototypes, assets, components)
+`src/data/kayenta.json` was generated from the Todoist connector on **11 September 2026** against
+project `6hF6qfX77MCQFJJp`, *Kayenta FY2022 — remaining audit work*.
+
+| Todoist | Tally |
+| --- | --- |
+| Project | The area **Kayenta FY2022** |
+| Section (Phase 1–7) | A project, with a progress ring in the rail |
+| Task | A to-do (`ref` keeps the audit numbering — 25d, 33, 41) |
+| Subtask | A checklist item on its parent, keeping its own notes |
+| Description | Notes, rendered from Markdown |
+| Label | A tag; priority p1/p2 becomes a red/amber `P1`/`P2` tag |
+| Due date | A deadline chip, with the relative days beside it |
+| Completed task | The Logbook, grouped by the day it was logged |
+
+Where a to-do sits follows the genre, not a stored field: a deadline on or before today puts it in
+**Today**, a later one in **Upcoming**, an undated p4 to-do in **Someday**, everything else open in
+**Anytime**. 51 to-dos and 30 checklist items came across — 17 open, 34 logged.
+
+**To re-sync:** pull the project, its tasks and its subtasks again, rewrite
+`src/data/kayenta.json` in the same shape, and bump `syncedAt`. The `syncedAt` value is part of the
+`localStorage` key, so a new sync automatically replaces stale local state rather than merging into
+it. Nothing in the app calls Todoist at runtime and no token ships to the browser.
+
+## What a person can do here
+
+- Complete a to-do, tick a checklist item, undo either from the toast
+- Open a to-do inline or in the detail pane (`D` swaps), read its notes and its subtasks' notes
+- Add a to-do (`N`), find any to-do by title, notes or checklist (`⌘K`)
+- Filter a list by tag, switch theme, choose the opening view, reset to the synced data (`⌘,`)
+
+Local edits persist in `localStorage` per sync stamp. They never travel back to Todoist — this is a
+read-only mirror with a working surface on top.
+
+## Development
+
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # static bundle in dist/
+npm run preview
+```
+
+## Deployment
+
+The Vercel project **things-productivity** builds this repository's default branch (Vite preset,
+output `dist`). Deployment protection is off, so the production URL is publicly reachable.
+
+## Provenance
+
+Tally is an original system in the genre of Cultured Code's Things 3, not a recreation of it — see
+`design-system/readme.md` > Provenance. Concrete numeric values (radii, the jumpy easing curve,
+panel shadows, semantic hues) come from the MIT-licensed Things theme for Obsidian by
+[@paralloid](https://github.com/MrParalloid/obsidian-things). Figtree stands in for Formular, which
+was not supplied.

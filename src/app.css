@@ -1,0 +1,40 @@
+/* App-level rules only. Everything visual comes from the design system tokens. */
+
+html, body, #root { height: 100%; }
+body { overflow: hidden; }
+
+/* The list column and the detail pane scroll independently; nothing else scrolls. */
+.tally-scroll { overflow-y: auto; overscroll-behavior: contain; }
+.tally-scroll::-webkit-scrollbar { width: 10px; height: 10px; }
+.tally-scroll::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border: 3px solid transparent;
+  background-clip: content-box;
+  border-radius: var(--radius-pill);
+}
+.tally-scroll::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); background-clip: content-box; }
+.tally-scroll::-webkit-scrollbar-track { background: transparent; }
+
+/* Notes rendered from synced Markdown. Spacing only — colour and type are tokens. */
+.tally-notes > * + * { margin-top: 8px; }
+.tally-notes ul, .tally-notes ol { margin: 0; padding-left: 20px; }
+.tally-notes li + li { margin-top: 3px; }
+.tally-notes code {
+  font: var(--type-mono);
+  background: var(--surface-sunken);
+  border-radius: var(--radius-xs);
+  padding: 1px 4px;
+}
+.tally-notes strong { font-weight: var(--weight-semibold); color: var(--text-primary); }
+.tally-notes a { text-decoration: none; }
+
+.tally-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .tally-sidebar { display: none; }
+}

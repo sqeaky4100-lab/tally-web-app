@@ -26,7 +26,7 @@ export function TaskDetailCard({
       </div>
 
       {notes && (
-        <p style={{ margin: '6px 0 0 26px', font: 'var(--type-body)', color: 'var(--text-secondary)', textWrap: 'pretty' }}>{notes}</p>
+        <div style={{ margin: '6px 0 0 26px', font: 'var(--type-body)', color: 'var(--text-secondary)', textWrap: 'pretty' }}>{notes}</div>
       )}
 
       {checklist.length > 0 && (
