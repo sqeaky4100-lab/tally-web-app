@@ -3,7 +3,7 @@
 A calm, list-first task manager for the web, built on the **Tally Design System** and seeded with
 the **Kayenta FY2022 — remaining audit work** project synced from Todoist.
 
-Live: <https://things-productivity.vercel.app>
+Live: <https://tally-web-app-kyle-tevis-projects.vercel.app>
 
 ---
 
@@ -77,8 +77,15 @@ npm run preview
 
 ## Deployment
 
-The Vercel project **things-productivity** builds this repository's default branch (Vite preset,
-output `dist`). Deployment protection is off, so the production URL is publicly reachable.
+The Vercel project **tally-web-app** (team *Kyle Tevis' projects*) is linked to this repository and
+builds `main` on every push — Vite preset, output `dist`. Deployment protection is off, so the
+production URL is publicly reachable.
+
+The older project **things-productivity** predates this repository. It was created from a direct
+file upload and has no Git link, and Vercel will not attach one to an existing project through the
+API, so it still serves its own earlier build. To move that URL onto this repository: Vercel →
+`things-productivity` → Settings → Git → Connect Git Repository → `sqeaky4100-lab/tally-web-app`.
+Its deployment protection is already off.
 
 ## Provenance
 
