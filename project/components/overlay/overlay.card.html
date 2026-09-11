@@ -1,0 +1,53 @@
+<!-- @dsCard group="Components" viewport="700x290" name="Overlay" subtitle="Menu, popover, dialog, tooltip, toast" -->
+<!doctype html><html><head><meta charset="utf-8"><title>Overlay</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;background:var(--canvas);font:var(--type-body)}#root{padding:16px 18px}.lab{font:var(--weight-semibold) var(--text-2xs)/1 var(--font-ui);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-tertiary);margin-bottom:10px}.grp{display:flex;flex-direction:column;gap:10px}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.cols{display:grid;gap:22px}</style></head><body><div id="root"></div>
+<script type="text/babel">
+const { Menu, MenuItem, MenuDivider, Popover, Dialog, Tooltip, Toast, Button, IconButton, Checkbox } = window.TallyDesignSystem_788326;
+function Demo(){
+  return <div className="cols" style={{gridTemplateColumns:'220px 250px 1fr',alignItems:'start'}}>
+    <div><div className="lab">Menu</div>
+      <Menu width={210}>
+        <MenuItem icon="calendar-days" label="When…" shortcut="⌘S" />
+        <MenuItem icon="flag" label="Deadline…" shortcut="⌘⇧D" />
+        <MenuItem icon="tag" label="Tags…" checked />
+        <MenuDivider />
+        <MenuItem icon="trash-2" label="Delete To-Do" danger />
+      </Menu>
+    </div>
+    <div><div className="lab">Popover</div>
+      <div style={{position:'relative',height:150}}>
+        <Popover open width={230} style={{position:'static'}}>
+          <div style={{padding:'6px 8px 10px'}}>
+            <div style={{font:'var(--type-ui-strong)',color:'var(--text-primary)',marginBottom:8}}>View options</div>
+            <div style={{display:'flex',flexDirection:'column',gap:8}}>
+              <Checkbox size={14} state="done" label="Show completed" />
+              <Checkbox size={14} state="open" label="Group by project" />
+            </div>
+          </div>
+        </Popover>
+      </div>
+    </div>
+    <div className="grp">
+      <div><div className="lab">Toast</div>
+        <Toast message="4 to-dos moved to Logbook" actionLabel="Undo" />
+      </div>
+      <div><div className="lab">Tooltip &amp; dialog</div>
+        <div className="row" style={{marginBottom:10}}>
+          <Tooltip label="New To-Do" shortcut="⌘N" placement="bottom"><IconButton icon="plus" label="New To-Do" /></Tooltip>
+          <span style={{font:'var(--type-caption)',color:'var(--text-tertiary)'}}>hover the glyph</span>
+        </div>
+        <div style={{position:'relative',height:130,borderRadius:'var(--radius-lg)',overflow:'hidden',background:'var(--surface-sunken)'}}>
+          <Dialog open width={280} title="Delete “Onboard James”?" description="This project and its 4 to-dos move to Trash."
+            footer={<><Button size="sm">Cancel</Button><Button size="sm" variant="danger">Delete</Button></>} style={{padding:'16px 16px 14px'}} />
+        </div>
+      </div>
+    </div>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>

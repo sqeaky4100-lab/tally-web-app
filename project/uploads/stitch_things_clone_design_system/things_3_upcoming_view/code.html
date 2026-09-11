@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Things 3 - Upcoming</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "tag-bg": "#eef1f4",
+                            "status-red": "#f83366",
+                            "outline": "#727784",
+                            "sidebar-bg": "#f5f6f8",
+                            "inverse-surface": "#2d3037",
+                            "tertiary-fixed-dim": "#ebc300",
+                            "secondary-fixed-dim": "#c5c7c8",
+                            "primary-fixed-dim": "#a9c8ff",
+                            "outline-variant": "#c1c6d4",
+                            "on-primary-fixed": "#001b3d",
+                            "on-secondary": "#ffffff",
+                            "on-secondary-fixed-variant": "#444749",
+                            "on-background": "#191c22",
+                            "main-bg": "#ffffff",
+                            "surface": "#f9f9ff",
+                            "on-secondary-container": "#606365",
+                            "on-primary-fixed-variant": "#00468b",
+                            "background": "#f9f9ff",
+                            "secondary-fixed": "#e1e2e4",
+                            "magic-plus-blue": "#4d94f7",
+                            "primary-fixed": "#d6e3ff",
+                            "inverse-primary": "#a9c8ff",
+                            "tertiary-fixed": "#ffe178",
+                            "primary": "#005db5",
+                            "text-extreme": "#000000",
+                            "secondary-container": "#dee0e2",
+                            "error": "#ba1a1a",
+                            "tertiary": "#715d00",
+                            "surface-variant": "#e1e2eb",
+                            "inverse-on-surface": "#eff0f9",
+                            "on-primary-container": "#002c5b",
+                            "surface-dim": "#d8dae2",
+                            "on-tertiary-fixed": "#231b00",
+                            "status-cyan": "#54ada4",
+                            "tertiary-container": "#cba800",
+                            "text-muted": "#818893",
+                            "error-container": "#ffdad6",
+                            "surface-container-low": "#f2f3fc",
+                            "surface-container-highest": "#e1e2eb",
+                            "surface-container-high": "#e6e8f0",
+                            "on-tertiary-fixed-variant": "#554500",
+                            "surface-container": "#ecedf6",
+                            "surface-bright": "#f9f9ff",
+                            "on-error": "#ffffff",
+                            "on-secondary-fixed": "#191c1e",
+                            "secondary": "#5c5f60",
+                            "surface-container-lowest": "#ffffff",
+                            "on-primary": "#ffffff",
+                            "on-error-container": "#93000a",
+                            "primary-container": "#4d94f7",
+                            "on-tertiary-container": "#4c3e00",
+                            "on-surface-variant": "#414752",
+                            "on-surface": "#191c22",
+                            "on-tertiary": "#ffffff",
+                            "surface-tint": "#005db5"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "content-max-width": "800px",
+                            "sidebar-width": "260px",
+                            "stack-gap": "8px",
+                            "gutter": "32px",
+                            "section-gap": "40px",
+                            "inset-squish": "4px 12px",
+                            "inset-square": "12px"
+                    },
+                    "fontFamily": {
+                            "body-lg": ["Inter", "sans-serif"],
+                            "headline-lg": ["Inter", "sans-serif"],
+                            "label-sm": ["Inter", "sans-serif"],
+                            "body-md": ["Inter", "sans-serif"],
+                            "headline-md": ["Inter", "sans-serif"],
+                            "label-md": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                            "body-lg": ["15px", {"lineHeight": "22px", "fontWeight": "400"}],
+                            "headline-lg": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                            "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                            "label-md": ["13px", {"lineHeight": "18px", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #191c22; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .custom-checkbox { appearance: none; width: 16px; height: 16px; border: 1.5px solid #c1c6d4; border-radius: 4px; outline: none; cursor: pointer; transition: all 0.2s ease-in-out; display: flex; align-items: center; justify-content: center; }
+        .custom-checkbox:checked { background-color: #4d94f7; border-color: #4d94f7; }
+        .custom-checkbox:checked::after { content: '\e5ca'; font-family: 'Material Symbols Outlined'; color: white; font-size: 14px; font-weight: bold; }
+        
+        /* Thin scrollbar for sidebar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,0.1); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background-color: rgba(0,0,0,0.2); }
+    </style>
+</head>
+<body class="bg-main-bg h-screen w-screen overflow-hidden flex selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- SideNavBar -->
+<aside class="bg-sidebar-bg w-sidebar-width h-screen fixed left-0 top-0 flex flex-col pt-8 pb-4 px-3 border-r border-surface-variant flex-shrink-0 z-20">
+<!-- Window Controls Placeholder -->
+<div class="flex gap-2 mb-8 px-2">
+<div class="w-3 h-3 rounded-full bg-status-red/20 border border-status-red/30"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary-fixed-dim/20 border border-tertiary-fixed-dim/30"></div>
+<div class="w-3 h-3 rounded-full bg-status-cyan/20 border border-status-cyan/30"></div>
+</div>
+<nav class="flex-1 overflow-y-auto overflow-x-hidden pr-2">
+<!-- Main Nav Tabs -->
+<ul class="space-y-[2px] mb-6">
+<li>
+<a class="flex items-center justify-between px-3 py-1.5 text-on-surface-variant hover:bg-tag-bg/50 rounded-xl transition-colors font-body-md" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-[#2c91d4]">inbox</span>
+<span>Inbox</span>
+</div>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between px-3 py-1.5 text-on-surface-variant hover:bg-tag-bg/50 rounded-xl transition-colors font-body-md" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-[#f2b938] fill-current" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>Today</span>
+</div>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between px-3 py-1.5 bg-tag-bg text-on-surface rounded-xl font-body-md shadow-sm" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-[#f76a59] fill-current" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="font-medium">Upcoming</span>
+</div>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between px-3 py-1.5 text-on-surface-variant hover:bg-tag-bg/50 rounded-xl transition-colors font-body-md" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-[#34a58b] fill-current" style="font-variation-settings: 'FILL' 1;">layers</span>
+<span>Anytime</span>
+</div>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between px-3 py-1.5 text-on-surface-variant hover:bg-tag-bg/50 rounded-xl transition-colors font-body-md" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-[#b89569] fill-current" style="font-variation-settings: 'FILL' 1;">archive</span>
+<span>Someday</span>
+</div>
+</a>
+</li>
+<li class="mt-4">
+<a class="flex items-center justify-between px-3 py-1.5 text-on-surface-variant hover:bg-tag-bg/50 rounded-xl transition-colors font-body-md" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-[#4db056] fill-current" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Logbook</span>
+</div>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between px-3 py-1.5 text-on-surface-variant hover:bg-tag-bg/50 rounded-xl transition-colors font-body-md" href="#">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-[#939ca6] fill-current" style="font-variation-settings: 'FILL' 1;">delete</span>
+<span>Trash</span>
+</div>
+</a>
+</li>
+</ul>
+<!-- Projects Section Placeholder -->
+<div class="mt-6 px-3">
+<div class="text-label-sm text-text-muted mb-2 uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">expand_more</span>
+                    Family
+                </div>
+</div>
+</nav>
+<!-- Sidebar Footer -->
+<div class="mt-auto pt-4 border-t border-surface-variant/50 flex items-center justify-between px-2">
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-colors font-body-md">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                New List
+            </button>
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded-md transition-colors">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-sidebar-width h-screen overflow-y-auto bg-main-bg relative flex justify-center">
+<div class="w-full max-w-content-max-width px-gutter pt-12 pb-32">
+<!-- Top App Bar / Header -->
+<header class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3 text-[#f76a59]">
+<span class="material-symbols-outlined text-[32px] fill-current" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Upcoming</h1>
+</div>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors focus:outline-none focus:ring-2 focus:ring-magic-plus-blue">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</header>
+<!-- Upcoming List Canvas -->
+<div class="space-y-section-gap">
+<!-- Section: Tomorrow -->
+<section>
+<div class="flex items-end justify-between border-b border-surface-variant/50 pb-2 mb-3">
+<h2 class="font-headline-md text-headline-md text-on-surface">Tomorrow</h2>
+<span class="font-body-md text-text-muted">Fri</span>
+</div>
+<ul class="space-y-[2px]">
+<li class="group flex items-start gap-3 p-2 -mx-2 rounded-lg hover:bg-surface transition-colors cursor-default">
+<input class="custom-checkbox mt-1 border-[#4d94f7]" type="checkbox"/>
+<div class="flex-1 min-w-0">
+<p class="font-body-lg text-on-surface truncate">Finalize Q3 Marketing Deck</p>
+<p class="font-body-md text-text-muted truncate mt-0.5">Work &gt; Prepare Presentation</p>
+</div>
+<span class="material-symbols-outlined text-[16px] text-text-muted opacity-0 group-hover:opacity-100 transition-opacity mt-1">drag_indicator</span>
+</li>
+<li class="group flex items-start gap-3 p-2 -mx-2 rounded-lg hover:bg-surface transition-colors cursor-default">
+<input class="custom-checkbox mt-1" type="checkbox"/>
+<div class="flex-1 min-w-0">
+<p class="font-body-lg text-on-surface truncate">Pick up dry cleaning</p>
+</div>
+</li>
+</ul>
+</section>
+<!-- Section: Specific Date -->
+<section>
+<div class="flex items-end justify-between border-b border-surface-variant/50 pb-2 mb-3">
+<h2 class="font-headline-md text-headline-md text-on-surface">May 25</h2>
+<span class="font-body-md text-text-muted">Wed</span>
+</div>
+<ul class="space-y-[2px]">
+<li class="group flex items-start gap-3 p-2 -mx-2 rounded-lg hover:bg-surface transition-colors cursor-default">
+<input class="custom-checkbox mt-1" type="checkbox"/>
+<div class="flex-1 min-w-0">
+<p class="font-body-lg text-on-surface truncate">Print handouts for attendees</p>
+<p class="font-body-md text-text-muted truncate mt-0.5">Work &gt; Prepare Presentation</p>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity mt-1">
+<span class="material-symbols-outlined text-[16px] text-text-muted">calendar_today</span>
+</div>
+</li>
+<li class="group flex items-start gap-3 p-2 -mx-2 rounded-lg hover:bg-surface transition-colors cursor-default">
+<input class="custom-checkbox mt-1 border-[#f2b938]" type="checkbox"/>
+<div class="flex-1 min-w-0 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-[#f2b938] fill-current" style="font-variation-settings: 'FILL' 1;">star</span>
+<p class="font-body-lg text-on-surface truncate">Review quarterly data with Olivia</p>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 rounded-full bg-tag-bg text-label-sm text-on-surface-variant">Important</span>
+</div>
+</li>
+</ul>
+</section>
+<!-- Section: Next Month -->
+<section>
+<div class="flex items-end justify-between border-b border-surface-variant/50 pb-2 mb-3">
+<h2 class="font-headline-md text-headline-md text-on-surface">June 1</h2>
+<span class="font-body-md text-text-muted">Wed</span>
+</div>
+<ul class="space-y-[2px]">
+<li class="group flex items-start gap-3 p-2 -mx-2 rounded-lg hover:bg-surface transition-colors cursor-default">
+<input class="custom-checkbox mt-1" type="checkbox"/>
+<div class="flex-1 min-w-0">
+<p class="font-body-lg text-on-surface truncate">Dentist Appointment</p>
+<p class="font-body-md text-text-muted truncate mt-0.5">Health</p>
+</div>
+</li>
+</ul>
+</section>
+</div>
+</div>
+<!-- Magic Plus Button -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-magic-plus-blue rounded-full flex items-center justify-center text-white shadow-[0_10px_30px_rgba(77,148,247,0.3)] hover:scale-105 transition-transform duration-200 focus:outline-none focus:ring-4 focus:ring-magic-plus-blue/30 z-50">
+<span class="material-symbols-outlined text-[32px]">add</span>
+</button>
+</main>
+</body></html>

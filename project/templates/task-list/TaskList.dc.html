@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Task list page" description="Sidebar rail plus a grouped to-do list — the Tally three-pane shell, ready to fill." -->
+<helmet><script src="./ds-base.js"></script></helmet>
+<div style="display:flex;height:100vh;overflow:hidden;background:var(--surface);color:var(--text-primary);font:var(--type-body)">
+
+  <div style="width:248px;flex:0 0 auto;display:flex;flex-direction:column;background:var(--canvas);border-right:1px solid var(--border-subtle)">
+    <div style="height:38px;flex:0 0 auto"></div>
+    <div style="flex:1;overflow-y:auto;padding:0 8px 12px">
+      <sc-for list="{{ lists }}" as="row" hint-placeholder-count="5">
+        <x-import component-from-global-scope="TallyDesignSystem_788326.SidebarItem" icon="{{ row.icon }}" icon-color="{{ row.color }}" label="{{ row.label }}" count="{{ row.count }}" active="{{ row.active }}" hint-size="100%,28px"></x-import>
+      </sc-for>
+      <x-import component-from-global-scope="TallyDesignSystem_788326.SidebarSection" label="Work" icon="briefcase" hint-size="100%,60px">
+        <x-import component-from-global-scope="TallyDesignSystem_788326.SidebarItem" progress="{{ projectProgress }}" label="Q3 Brand Refresh" indent="{{ 1 }}" hint-size="100%,28px"></x-import>
+      </x-import>
+    </div>
+    <div style="display:flex;align-items:center;gap:4px;height:44px;padding:0 10px;flex:0 0 auto;border-top:1px solid var(--border-subtle)">
+      <x-import component-from-global-scope="TallyDesignSystem_788326.Button" variant="ghost" size="sm" icon="plus" hint-size="90px,26px">New List</x-import>
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:6px;height:38px;padding:0 12px;flex:0 0 auto">
+      <span style="flex:1"></span>
+      <x-import component-from-global-scope="TallyDesignSystem_788326.IconButton" icon="ellipsis" label="View options" size="sm" hint-size="24px,24px"></x-import>
+      <x-import component-from-global-scope="TallyDesignSystem_788326.IconButton" icon="plus" label="New To-Do" size="sm" hint-size="24px,24px"></x-import>
+    </div>
+
+    <div style="flex:1;min-height:0;overflow-y:auto">
+      <div style="max-width:720px;margin:0 auto;padding:34px 32px 120px">
+        <x-import component-from-global-scope="TallyDesignSystem_788326.ViewHeader" title="{{ viewTitle }}" icon="{{ viewIcon }}" icon-color="{{ viewIconColor }}" hint-size="100%,40px"></x-import>
+
+        <div style="margin-top:20px">
+          <sc-for list="{{ groups }}" as="group" hint-placeholder-count="2">
+            <div>
+              <sc-if value="{{ group.title }}" hint-placeholder-val="{{ true }}">
+                <x-import component-from-global-scope="TallyDesignSystem_788326.TaskGroupHeader" title="{{ group.title }}" hint-size="100%,32px"></x-import>
+              </sc-if>
+              <div style="margin-top:4px">
+                <sc-for list="{{ group.items }}" as="task" hint-placeholder-count="4">
+                  <x-import component-from-global-scope="TallyDesignSystem_788326.TaskRow" title="{{ task.title }}" state="{{ task.state }}" today="{{ task.today }}" meta="{{ task.meta }}" tags="{{ task.tags }}" hint-size="100%,30px"></x-import>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:800},&quot;viewTitle&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Today&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;viewIcon&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;star&quot;,&quot;inbox&quot;,&quot;calendar-days&quot;,&quot;layers&quot;,&quot;archive&quot;,&quot;circle-check&quot;],&quot;default&quot;:&quot;star&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;viewIconColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;options&quot;:[&quot;#fdd31b&quot;,&quot;#4d94f7&quot;,&quot;#f83366&quot;,&quot;#54ada4&quot;,&quot;#e96100&quot;,&quot;#55a66d&quot;],&quot;default&quot;:&quot;var(--state-today)&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showGroups&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    return {
+      viewTitle: p.viewTitle ?? 'Today',
+      viewIcon: p.viewIcon ?? 'star',
+      viewIconColor: p.viewIconColor ?? 'var(--state-today)',
+      projectProgress: 0.4,
+      lists: [
+        { icon: 'inbox', color: 'var(--blue-400)', label: 'Inbox', count: 2, active: false },
+        { icon: 'star', color: 'var(--state-today)', label: 'Today', count: 5, active: true },
+        { icon: 'calendar-days', color: 'var(--state-deadline)', label: 'Upcoming', count: 0, active: false },
+        { icon: 'layers', color: 'var(--state-scheduled)', label: 'Anytime', count: 0, active: false },
+        { icon: 'archive', color: 'var(--state-someday)', label: 'Someday', count: 0, active: false },
+      ],
+      groups: [
+        { title: p.showGroups === false ? '' : 'Identity', items: [
+          { title: 'Sign off the wordmark spacing', state: 'progress', today: true, meta: ['file-text'], tags: [{ label: 'Important' }] },
+          { title: 'Collect stationery quotes', state: 'open', today: false, meta: [], tags: [{ label: 'Waiting On' }] },
+        ] },
+        { title: p.showGroups === false ? '' : 'Rollout', items: [
+          { title: 'Draft the announcement post', state: 'open', today: false, meta: ['list-checks'], tags: [] },
+          { title: 'Update the deck template', state: 'open', today: false, meta: [], tags: [] },
+          { title: 'Renew the domain', state: 'done', today: false, meta: [], tags: [] },
+        ] },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

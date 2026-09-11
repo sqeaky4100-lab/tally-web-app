@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Settings pane" description="Grouped preference rows — switches, selects and a segmented theme picker — on the Tally shell." -->
+<helmet><script src="./ds-base.js"></script></helmet>
+<div style="display:flex;height:100vh;overflow:hidden;background:var(--surface);color:var(--text-primary);font:var(--type-body)">
+
+  <div style="width:214px;flex:0 0 auto;display:flex;flex-direction:column;background:var(--canvas);border-right:1px solid var(--border-subtle)">
+    <div style="display:flex;align-items:center;gap:8px;height:44px;padding:0 14px;flex:0 0 auto">
+      <x-import component-from-global-scope="TallyDesignSystem_788326.BrandMark" size="{{ 20 }}" variant="mono" hint-size="20px,20px"></x-import>
+      <span style="font-size:13px;font-weight:600;letter-spacing:-.01em">Settings</span>
+    </div>
+    <div style="flex:1;overflow-y:auto;padding:0 8px 12px">
+      <sc-for list="{{ panes }}" as="row" hint-placeholder-count="6">
+        <x-import component-from-global-scope="TallyDesignSystem_788326.SidebarItem" icon="{{ row.icon }}" label="{{ row.label }}" active="{{ row.active }}" hint-size="100%,28px"></x-import>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:0;overflow-y:auto">
+    <div style="max-width:600px;margin:0 auto;padding:44px 34px 90px">
+      <h1 style="margin:0;font-size:26px;font-weight:600;letter-spacing:-.02em">{{ paneTitle }}</h1>
+      <p style="margin:8px 0 0;font-size:13px;line-height:19px;color:var(--text-tertiary);max-width:44ch">{{ paneNote }}</p>
+
+      <sc-for list="{{ sections }}" as="section" hint-placeholder-count="3">
+        <div style="margin-top:34px">
+          <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-tertiary);padding:0 2px 9px">{{ section.title }}</div>
+          <div style="background:var(--canvas);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden">
+            <sc-for list="{{ section.rows }}" as="row" hint-placeholder-count="3">
+              <div style="display:flex;align-items:center;gap:16px;padding:13px 16px;border-top:1px solid var(--border-subtle)">
+                <div style="flex:1;min-width:0">
+                  <div style="font-size:13.5px;font-weight:500">{{ row.label }}</div>
+                  <sc-if value="{{ row.hint }}" hint-placeholder-val="{{ true }}">
+                    <div style="margin-top:3px;font-size:12px;line-height:17px;color:var(--text-tertiary)">{{ row.hint }}</div>
+                  </sc-if>
+                </div>
+                <div style="flex:0 0 auto;display:flex;align-items:center;gap:8px">
+                  <sc-if value="{{ row.isSwitch }}" hint-placeholder-val="{{ true }}">
+                    <x-import component-from-global-scope="TallyDesignSystem_788326.Switch" checked="{{ row.on }}" on-change="{{ row.toggle }}" hint-size="40px,23px"></x-import>
+                  </sc-if>
+                  <sc-if value="{{ row.isSelect }}" hint-placeholder-val="{{ false }}">
+                    <x-import component-from-global-scope="TallyDesignSystem_788326.Select" value="{{ row.value }}" on-change="{{ row.change }}" options="{{ row.options }}" size="sm" hint-size="140px,26px"></x-import>
+                  </sc-if>
+                  <sc-if value="{{ row.isSegmented }}" hint-placeholder-val="{{ false }}">
+                    <x-import component-from-global-scope="TallyDesignSystem_788326.Segmented" options="{{ row.options }}" value="{{ row.value }}" on-change="{{ row.pick }}" size="sm" hint-size="170px,26px"></x-import>
+                  </sc-if>
+                  <sc-if value="{{ row.shortcut }}" hint-placeholder-val="{{ false }}">
+                    <kbd style="font:var(--type-mono);font-size:11px;color:var(--text-secondary);background:var(--surface-hover);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);padding:2px 7px">{{ row.shortcut }}</kbd>
+                  </sc-if>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+
+      <div style="margin-top:40px;display:flex;align-items:center;gap:10px">
+        <x-import component-from-global-scope="TallyDesignSystem_788326.Button" variant="ghost" size="sm" icon="undo-2" hint-size="130px,26px">Reset defaults</x-import>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:820},&quot;paneTitle&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;General&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showNote&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showShortcuts&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { theme: 'System', badges: true, confirm: false, sounds: true, week: 'Monday', logbook: 'Daily' };
+  renderVals() {
+    const p = this.props, s = this.state, self = this;
+    const set = function (k) { return function (v) { self.setState(function (o) { var n = {}; n[k] = typeof v === 'boolean' ? v : (v && v.target ? v.target.value : v); return n; }); }; };
+    const sections = [
+      { title: 'General', rows: [
+        { label: 'Theme', hint: 'Dark follows the system after sunset.', isSegmented: true, options: ['Light', 'Dark', 'System'], value: s.theme, pick: set('theme') },
+        { label: 'Start the week on', isSelect: true, value: s.week, change: set('week'), options: ['Monday', 'Sunday'] },
+        { label: 'Show counts in the sidebar', hint: 'Numbers next to Inbox and Today.', isSwitch: true, on: s.badges, toggle: set('badges') },
+      ] },
+      { title: 'To-dos', rows: [
+        { label: 'Confirm before deleting', isSwitch: true, on: s.confirm, toggle: set('confirm') },
+        { label: 'Completion sound', hint: 'A short click when a to-do is logged.', isSwitch: true, on: s.sounds, toggle: set('sounds') },
+        { label: 'Move logged items to Logbook', isSelect: true, value: s.logbook, change: set('logbook'), options: ['Immediately', 'Daily', 'Weekly'] },
+      ] },
+      { title: 'Shortcuts', rows: [
+        { label: 'Quick Entry', shortcut: '⌃ Space' },
+        { label: 'Quick Find', shortcut: '⌘ F' },
+        { label: 'New To-Do', shortcut: '⌘ N' },
+      ] },
+    ];
+    return {
+      paneTitle: p.paneTitle ?? 'General',
+      paneNote: p.showNote === false ? '' : 'Preferences apply the moment you change them. Nothing here needs saving.',
+      panes: [
+        { icon: 'settings', label: 'General', active: true },
+        { icon: 'sun', label: 'Appearance' },
+        { icon: 'bell', label: 'Reminders' },
+        { icon: 'tags', label: 'Tags' },
+        { icon: 'repeat', label: 'Repeating' },
+        { icon: 'user', label: 'Account' },
+      ],
+      sections: p.showShortcuts === false ? sections.slice(0, 2) : sections,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

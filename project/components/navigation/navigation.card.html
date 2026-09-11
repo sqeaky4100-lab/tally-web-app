@@ -1,0 +1,42 @@
+<!-- @dsCard group="Components" viewport="700x300" name="Navigation" subtitle="Sidebar rail, area sections, view header, toolbar" -->
+<!doctype html><html><head><meta charset="utf-8"><title>Navigation</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;background:var(--canvas);font:var(--type-body)}#root{padding:16px 18px}.lab{font:var(--weight-semibold) var(--text-2xs)/1 var(--font-ui);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-tertiary);margin-bottom:10px}.grp{display:flex;flex-direction:column;gap:10px}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.cols{display:grid;gap:22px}</style></head><body><div id="root"></div>
+<script type="text/babel">
+const { SidebarItem, SidebarSection, ViewHeader, Toolbar, Button, IconButton } = window.TallyDesignSystem_788326;
+function Demo(){
+  const [a,setA]=React.useState('Today');
+  const B=[['inbox','Inbox','var(--blue-400)',2,0],['star','Today','var(--state-today)',8,1],
+    ['calendar-days','Upcoming','var(--state-deadline)',0,0],['layers','Anytime','var(--state-scheduled)',0,0],
+    ['archive','Someday','var(--state-someday)',0,0]];
+  return <div className="cols" style={{gridTemplateColumns:'248px 1fr'}}>
+    <div style={{background:'var(--canvas)',border:'1px solid var(--border-subtle)',borderRadius:'var(--radius-lg)',padding:'8px 6px 0',display:'flex',flexDirection:'column',height:262}}>
+      <div style={{flex:1,overflow:'hidden'}}>
+        {B.map(([i,l,c,n,o])=><SidebarItem key={l} icon={i} iconColor={c} label={l} count={n} overdue={o} active={a===l} onClick={()=>setA(l)} />)}
+        <SidebarSection label="Work" icon="briefcase">
+          <SidebarItem progress={0.4} label="Prepare Presentation" indent={1} active={a==='Prepare Presentation'} onClick={()=>setA('Prepare Presentation')} />
+          <SidebarItem progress={0} label="Onboard James" indent={1} active={a==='Onboard James'} onClick={()=>setA('Onboard James')} />
+        </SidebarSection>
+      </div>
+      <Toolbar position="bottom" style={{margin:'0 -6px',borderBottomLeftRadius:'var(--radius-lg)',borderBottomRightRadius:'var(--radius-lg)'}}>
+        <Button variant="ghost" size="sm" icon="plus">New List</Button>
+        <span style={{flex:1}} />
+        <IconButton icon="sliders-horizontal" label="View settings" size="sm" />
+      </Toolbar>
+    </div>
+    <div className="grp">
+      <div><div className="lab">View header</div>
+        <ViewHeader icon="star" iconColor="var(--state-today)" title="Today" />
+      </div>
+      <div style={{marginTop:12}}>
+        <ViewHeader progress={0.4} title="Prepare Presentation" subtitle="Keep the talk and slides simple: what are the three things everyone should remember?" />
+      </div>
+    </div>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>

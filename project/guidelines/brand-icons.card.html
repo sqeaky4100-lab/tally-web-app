@@ -1,0 +1,8 @@
+<!-- @dsCard group="Brand" viewport="700x300" name="Iconography — Tally set" subtitle="53 glyphs drawn from the mark. 24 grid, 2px stroke, currentColor. No emoji, ever." -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<script src="../assets/icons/tally-icons.global.js"></script>
+<style>body{margin:0;background:var(--surface);color:var(--text-primary)}.p{padding:16px 20px;display:grid;grid-template-columns:repeat(13,1fr);gap:15px 6px}.p svg{display:block;margin:0 auto;color:var(--text-secondary)}.n{margin-top:6px;font:var(--type-mono);font-size:8.5px;color:var(--text-tertiary);text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}</style>
+</head><body><div class="p" id="g"></div>
+<script>
+document.getElementById('g').innerHTML=Object.keys(window.TallyIcons).map(function(n){return '<div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+window.TallyIcons[n]+'</svg><div class="n">'+n+'</div></div>';}).join('');
+</script></body></html>

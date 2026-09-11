@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Things - Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tag-bg": "#eef1f4",
+                        "status-red": "#f83366",
+                        "outline": "#727784",
+                        "sidebar-bg": "#f5f6f8",
+                        "inverse-surface": "#2d3037",
+                        "tertiary-fixed-dim": "#ebc300",
+                        "secondary-fixed-dim": "#c5c7c8",
+                        "primary-fixed-dim": "#a9c8ff",
+                        "outline-variant": "#c1c6d4",
+                        "on-primary-fixed": "#001b3d",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#444749",
+                        "on-background": "#191c22",
+                        "main-bg": "#ffffff",
+                        "surface": "#f9f9ff",
+                        "on-secondary-container": "#606365",
+                        "on-primary-fixed-variant": "#00468b",
+                        "background": "#f9f9ff",
+                        "secondary-fixed": "#e1e2e4",
+                        "magic-plus-blue": "#4d94f7",
+                        "primary-fixed": "#d6e3ff",
+                        "inverse-primary": "#a9c8ff",
+                        "tertiary-fixed": "#ffe178",
+                        "primary": "#005db5",
+                        "text-extreme": "#000000",
+                        "secondary-container": "#dee0e2",
+                        "error": "#ba1a1a",
+                        "tertiary": "#715d00",
+                        "surface-variant": "#e1e2eb",
+                        "inverse-on-surface": "#eff0f9",
+                        "on-primary-container": "#002c5b",
+                        "surface-dim": "#d8dae2",
+                        "on-tertiary-fixed": "#231b00",
+                        "status-cyan": "#54ada4",
+                        "tertiary-container": "#cba800",
+                        "text-muted": "#818893",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f2f3fc",
+                        "surface-container-highest": "#e1e2eb",
+                        "surface-container-high": "#e6e8f0",
+                        "on-tertiary-fixed-variant": "#554500",
+                        "surface-container": "#ecedf6",
+                        "surface-bright": "#f9f9ff",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#191c1e",
+                        "secondary": "#5c5f60",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#4d94f7",
+                        "on-tertiary-container": "#4c3e00",
+                        "on-surface-variant": "#414752",
+                        "on-surface": "#191c22",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#005db5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "content-max-width": "800px",
+                        "sidebar-width": "260px",
+                        "stack-gap": "8px",
+                        "gutter": "32px",
+                        "section-gap": "40px",
+                        "inset-squish": "4px 12px",
+                        "inset-square": "12px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["15px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #68D391;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #68D391;
+        }
+        .toggle-checkbox {
+            right: 0;
+            z-index: 1;
+            border-color: #e2e8f0;
+            transition: all 0.3s;
+        }
+        .toggle-label {
+            background-color: #e2e8f0;
+            border-radius: 9999px;
+            transition: all 0.3s;
+        }
+        .liquid-shadow {
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1), 0 0 1px 1px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 h-screen w-screen flex items-center justify-center font-body-md text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+<div class="fixed inset-0 bg-black/20 backdrop-blur-[2px] z-40"></div>
+<div class="relative z-50 bg-main-bg w-full max-w-[800px] h-[600px] rounded-[28px] liquid-shadow flex overflow-hidden ring-1 ring-black/5">
+<aside class="w-[220px] bg-sidebar-bg flex flex-col h-full border-r border-black/5 flex-shrink-0">
+<div class="h-12 w-full drag-handle"></div>
+<nav class="flex-1 px-3 py-2 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl bg-tag-bg text-on-surface font-label-md" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+                    General
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-on-surface-variant hover:bg-tag-bg/50 transition-colors font-label-md" href="#">
+<span class="material-symbols-outlined text-[18px]">palette</span>
+                    Appearance
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-on-surface-variant hover:bg-tag-bg/50 transition-colors font-label-md" href="#">
+<span class="material-symbols-outlined text-[18px]">notifications</span>
+                    Reminders
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-on-surface-variant hover:bg-tag-bg/50 transition-colors font-label-md" href="#">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+                    Things Cloud
+                </a>
+</nav>
+</aside>
+<main class="flex-1 flex flex-col h-full bg-main-bg">
+<header class="h-14 flex items-center justify-between px-6 border-b border-black/5 shrink-0 drag-handle">
+<h1 class="font-headline-md text-on-surface">General</h1>
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded-md transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</header>
+<div class="flex-1 overflow-y-auto p-8">
+<div class="max-w-md mx-auto space-y-section-gap">
+<section class="space-y-6">
+<div class="space-y-4">
+<h2 class="font-label-sm text-text-muted uppercase tracking-wider">Startup</h2>
+<div class="flex items-center justify-between p-4 bg-surface rounded-xl border border-black/5">
+<div>
+<p class="font-label-md text-on-surface">Launch at login</p>
+<p class="font-body-md text-text-muted text-xs mt-0.5">Start Things automatically when you log in.</p>
+</div>
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer checked:border-magic-plus-blue" id="startup-toggle" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-surface-variant cursor-pointer" for="startup-toggle"></label>
+</div>
+</div>
+</div>
+</section>
+<section class="space-y-6">
+<div class="space-y-4">
+<h2 class="font-label-sm text-text-muted uppercase tracking-wider">Default List</h2>
+<div class="space-y-2">
+<label class="font-label-md text-on-surface block">New tasks go to</label>
+<div class="relative">
+<select class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-magic-plus-blue focus:border-magic-plus-blue sm:text-sm rounded-lg bg-surface border border-black/5 appearance-none text-on-surface font-body-md">
+<option>Inbox</option>
+<option>Today</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-text-muted">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="space-y-6">
+<div class="space-y-4">
+<h2 class="font-label-sm text-text-muted uppercase tracking-wider">Quick Entry</h2>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-on-surface">Quick Entry</label>
+<button class="px-3 py-1 bg-surface border border-black/5 rounded-md text-sm font-label-md text-on-surface shadow-sm hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-magic-plus-blue focus:border-transparent">
+                                        ^ Space
+                                    </button>
+</div>
+<div class="flex items-center justify-between">
+<label class="font-label-md text-on-surface">Quick Entry with Autofill</label>
+<button class="px-3 py-1 bg-surface border border-black/5 rounded-md text-sm font-label-md text-on-surface shadow-sm hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-magic-plus-blue focus:border-transparent">
+                                        ^ ⌥ Space
+                                    </button>
+</div>
+<p class="font-body-md text-text-muted text-xs">These shortcuts can be used from any app to quickly create new tasks.</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+</body></html>

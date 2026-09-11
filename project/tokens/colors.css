@@ -1,0 +1,151 @@
+/* ── Colors ─────────────────────────────────────────────
+   Base ramps first, semantic aliases second. Always consume
+   the semantic alias in components; ramps are for authoring. */
+
+:root {
+  /* Neutral ramp — very slightly cool. The whole product lives here. */
+  --gray-0:   #ffffff;
+  --gray-25:  #fbfbfc;
+  --gray-50:  #f5f6f8;
+  --gray-100: #eceef1;
+  --gray-200: #dfe2e7;
+  --gray-300: #c9cdd4;
+  --gray-400: #a8aeb8;
+  --gray-500: #858c97;
+  --gray-600: #6a7079;
+  --gray-700: #4d525a;
+  --gray-800: #373a3e;
+  --gray-900: #22252a;
+  --gray-950: #131519;
+
+  /* Blue — the single signal colour. Selection, links, active checkboxes. */
+  --blue-50:  #eef5fe;
+  --blue-100: #dceafd;
+  --blue-200: #bad5fb;
+  --blue-300: #8fbcf8;
+  --blue-400: #4d94f7;
+  --blue-500: #1f7ae0;
+  --blue-600: #0062c1;
+  --blue-700: #004e9b;
+
+  /* Accent hues — list markers, tags, deadlines. Used sparingly and
+     always at small size; never as a fill for large areas. */
+  --yellow-400: #fdd31b;
+  --yellow-500: #e8b800;
+  --orange-500: #e96100;
+  --red-400:    #ff5383;
+  --red-500:    #f83366;
+  --red-600:    #d81b4c;
+  --green-400:  #82ba6a;
+  --green-500:  #55a66d;
+  --green-600:  #3f7159;
+  --teal-500:   #54ada4;
+  --purple-500: #a86aba;
+  --slate-500:  #818893;
+
+  /* ── Semantic: surfaces ── */
+  --canvas:            var(--gray-50);
+  --surface:           var(--gray-0);
+  --surface-sunken:    var(--gray-100);
+  --surface-raised:    var(--gray-0);
+  --surface-overlay:   rgba(255, 255, 255, 0.86);
+  --surface-selected:  var(--blue-50);
+  --surface-hover:     rgba(100, 115, 120, 0.07);
+  --surface-pressed:   rgba(100, 115, 120, 0.13);
+  --scrim:             rgba(19, 21, 25, 0.28);
+
+  /* ── Semantic: text ── */
+  --text-primary:   var(--gray-800);
+  --text-secondary: var(--gray-600);
+  --text-tertiary:  var(--gray-400);
+  --text-disabled:  var(--gray-300);
+  --text-inverse:   var(--gray-0);
+  --text-accent:    var(--blue-600);
+  --text-danger:    var(--red-600);
+  --text-done:      var(--gray-500);
+
+  /* ── Semantic: borders ── */
+  --border-subtle:  rgba(0, 0, 0, 0.05);
+  --border-default: var(--gray-200);
+  --border-strong:  var(--gray-300);
+  --border-accent:  var(--blue-500);
+  --border-focus:   var(--blue-400);
+
+  /* ── Semantic: interactive ── */
+  --accent:            var(--blue-500);
+  --accent-hover:      var(--blue-600);
+  --accent-pressed:    var(--blue-700);
+  --accent-soft:       var(--blue-100);
+  --on-accent:         var(--gray-0);
+
+  /* ── Semantic: task state ── */
+  --state-open:        var(--gray-300);
+  --state-progress:    var(--blue-500);
+  --state-done:        var(--blue-500);
+  --state-canceled:    var(--gray-400);
+  --state-today:       var(--yellow-400);
+  --state-deadline:    var(--red-500);
+  --state-scheduled:   var(--teal-500);
+  --state-someday:     var(--orange-500);
+  --state-logged:      var(--green-500);
+
+  /* ── Semantic: tags (soft fill + readable ink) ── */
+  --tag-bg:      rgba(100, 115, 120, 0.10);
+  --tag-ink:     var(--gray-600);
+  --tag-bg-green: rgba(85, 166, 109, 0.16);
+  --tag-ink-green: var(--green-600);
+  --tag-bg-blue:  var(--blue-100);
+  --tag-ink-blue: var(--blue-700);
+  --tag-bg-red:   rgba(248, 51, 102, 0.13);
+  --tag-ink-red:  var(--red-600);
+  --tag-bg-amber: rgba(253, 211, 27, 0.24);
+  --tag-ink-amber: #8a6d00;
+}
+
+/* ── Dark theme ─────────────────────────────────────────
+   Not an inversion: the canvas goes to near-black, panels
+   lift with a slightly lighter grey, and blue brightens. */
+[data-theme="dark"] {
+  --canvas:            #13181d;
+  --surface:           #1d2228;
+  --surface-sunken:    #171c21;
+  --surface-raised:    #262b31;
+  --surface-overlay:   rgba(38, 43, 49, 0.9);
+  --surface-selected:  rgba(77, 148, 247, 0.16);
+  --surface-hover:     rgba(255, 255, 255, 0.05);
+  --surface-pressed:   rgba(255, 255, 255, 0.09);
+  --scrim:             rgba(0, 0, 0, 0.5);
+
+  --text-primary:   #e7e9ec;
+  --text-secondary: #a9b0ba;
+  --text-tertiary:  #798390;
+  --text-disabled:  #545c66;
+  --text-inverse:   #13181d;
+  --text-accent:    var(--blue-400);
+  --text-danger:    var(--red-400);
+  --text-done:      #798390;
+
+  --border-subtle:  rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.10);
+  --border-strong:  rgba(255, 255, 255, 0.18);
+
+  --accent:         var(--blue-400);
+  --accent-hover:   #6ba6f9;
+  --accent-pressed: #3b84e8;
+  --accent-soft:    rgba(77, 148, 247, 0.20);
+  --on-accent:      #10151a;
+
+  --state-open:     #545c66;
+  --state-canceled: #6b7480;
+
+  --tag-bg:        rgba(255, 255, 255, 0.09);
+  --tag-ink:       #a9b0ba;
+  --tag-bg-green:  rgba(130, 186, 106, 0.20);
+  --tag-ink-green: #9ed087;
+  --tag-bg-blue:   rgba(77, 148, 247, 0.20);
+  --tag-ink-blue:  #8fbcf8;
+  --tag-bg-red:    rgba(255, 83, 131, 0.20);
+  --tag-ink-red:   #ff8caa;
+  --tag-bg-amber:  rgba(253, 211, 27, 0.18);
+  --tag-ink-amber: #e8c65a;
+}

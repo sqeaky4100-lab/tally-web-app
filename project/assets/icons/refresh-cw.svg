@@ -1,0 +1,6 @@
+<svg class="tally tally-refresh-cw" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M20.2 9.4a8.4 8.4 0 0 0-14.4-3L3.8 8.4"></path>
+  <path d="M3.8 3.8v4.6h4.6"></path>
+  <path d="M3.8 14.6a8.4 8.4 0 0 0 14.4 3l2-2"></path>
+  <path d="M20.2 20.2v-4.6h-4.6"></path>
+</svg>

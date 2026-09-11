@@ -1,0 +1,47 @@
+<!-- @dsCard group="Components" viewport="700x250" name="Forms" subtitle="Checkbox states, text fields, select, switch, radio" -->
+<!doctype html><html><head><meta charset="utf-8"><title>Forms</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;background:var(--canvas);font:var(--type-body)}#root{padding:16px 18px}.lab{font:var(--weight-semibold) var(--text-2xs)/1 var(--font-ui);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-tertiary);margin-bottom:10px}.grp{display:flex;flex-direction:column;gap:10px}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.cols{display:grid;gap:22px}</style></head><body><div id="root"></div>
+<script type="text/babel">
+const { Checkbox, TextField, Select, Switch, Radio } = window.TallyDesignSystem_788326;
+function Demo(){
+  const [on,setOn]=React.useState(true);
+  const [pick,setPick]=React.useState('today');
+  return <div className="cols" style={{gridTemplateColumns:'300px 1fr'}}>
+    <div className="grp">
+      <div><div className="lab">Checkbox — to-do</div><div className="row" style={{gap:18}}>
+        {['open','progress','done','canceled'].map(s=>
+          <span key={s} style={{display:'flex',flexDirection:'column',alignItems:'center',gap:6}}>
+            <Checkbox state={s} /><span style={{font:'var(--type-caption)',color:'var(--text-tertiary)'}}>{s}</span>
+          </span>)}
+      </div></div>
+      <div><div className="lab">Checkbox — project</div><div className="row" style={{gap:18}}>
+        {['open','progress','done','canceled'].map(s=><Checkbox key={s} shape="circle" state={s} />)}
+      </div></div>
+      <div><div className="lab">Switch &amp; radio</div><div className="row" style={{gap:20}}>
+        <Switch checked={on} onChange={()=>setOn(!on)} label="Show completed" />
+      </div>
+      <div className="row" style={{gap:20,marginTop:10}}>
+        <Radio checked={pick==='today'} onChange={()=>setPick('today')} label="Today" />
+        <Radio checked={pick==='someday'} onChange={()=>setPick('someday')} label="Someday" />
+      </div></div>
+    </div>
+    <div className="grp">
+      <div><div className="lab">Text field</div><div className="grp">
+        <TextField icon="search" placeholder="Quick Find" size="sm" />
+        <TextField placeholder="Project name" />
+        <TextField multiline rows={2} placeholder="Notes" />
+      </div></div>
+      <div><div className="lab">Select</div><div className="row">
+        <Select options={['Open','In Progress','Done']} value="Open" onChange={()=>{}} />
+        <Select size="sm" options={['Today','Someday']} value="Today" onChange={()=>{}} />
+      </div></div>
+    </div>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>

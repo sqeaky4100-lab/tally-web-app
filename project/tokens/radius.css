@@ -1,0 +1,16 @@
+/* ── Radius ─────────────────────────────────────────────
+   Small controls stay crisp; panels and pills go generously
+   round. The 10 / 18 / 28 steps carry over from the source
+   theme's --radius-s / -m / -l. */
+
+:root {
+  --radius-xs:   3px;
+  --radius-sm:   5px;
+  --radius-md:   8px;
+  --radius-lg:   10px;
+  --radius-xl:   18px;
+  --radius-2xl:  28px;
+  --radius-pill: 999px;
+  --radius-checkbox: 4px;   /* to-do */
+  --radius-circle:  50%;    /* project / heading */
+}

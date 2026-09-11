@@ -1,0 +1,44 @@
+<!-- @dsCard group="Components" viewport="700x330" name="Tasks" subtitle="Task rows, group headers, checklist, detail card, date chips" -->
+<!doctype html><html><head><meta charset="utf-8"><title>Tasks</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;background:var(--canvas);font:var(--type-body)}#root{padding:16px 18px}.lab{font:var(--weight-semibold) var(--text-2xs)/1 var(--font-ui);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-tertiary);margin-bottom:10px}.grp{display:flex;flex-direction:column;gap:10px}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.cols{display:grid;gap:22px}</style></head><body><div id="root"></div>
+<script type="text/babel">
+const { TaskRow, TaskGroupHeader, ChecklistItem, TaskDetailCard, DateChip } = window.TallyDesignSystem_788326;
+function Demo(){
+  return <div className="cols" style={{gridTemplateColumns:'1fr 300px'}}>
+    <div>
+      <div className="lab">Task rows</div>
+      <TaskGroupHeader title="Slides and notes" style={{marginTop:0}} />
+      <div style={{marginTop:4}}>
+        <TaskRow title="Revise introduction" meta={['file-text']} />
+        <TaskRow title="Simplify slide layouts" selected />
+        <TaskRow title="Review quarterly data with Olivia" today tags={['Errand']} />
+        <TaskRow title="Print handouts for attendees" trailing={<DateChip kind="deadline" size="sm" muted>5d left</DateChip>} />
+        <TaskRow title="Onboard James" progress={0.35} />
+        <TaskRow title="Email John for tips" state="done" />
+        <TaskRow title="Order team t-shirts" state="canceled" />
+      </div>
+      <div className="lab" style={{marginTop:18}}>Date chips</div>
+      <div className="row">
+        <DateChip kind="today">Today</DateChip>
+        <DateChip kind="scheduled">Fri, 12 Sep</DateChip>
+        <DateChip kind="deadline" secondary="5 days left">Tue, 2 Apr</DateChip>
+        <DateChip kind="someday">Someday</DateChip>
+      </div>
+    </div>
+    <div>
+      <div className="lab">Detail card</div>
+      <TaskDetailCard title="Update slide layouts"
+        notes="Brand guidelines are on the website, but John will send an updated version soon."
+        checklist={[{label:'Introduction needs more images'},{label:'Add our company logo',checked:true}]}
+        tags={['Important']}
+        when={{kind:'today',label:'Today'}} />
+    </div>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>
